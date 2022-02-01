@@ -6,7 +6,7 @@ from database import *
 import scipy.cluster.hierarchy as shc
 from sklearn.preprocessing import normalize
 from sklearn.cluster import AgglomerativeClustering
-from sklearn.metrics import classification_report,confusion_matrix,adjusted_rand_score,rand_score,fowlkes_mallows_score,jaccard_score
+from sklearn.metrics import classification_report,confusin_matrix,adjusted_rand_score,rand_score,fowlkes_mallows_score,jaccard_score
 from sklearn.model_selection import train_test_split
 
 # Importando os dados
