@@ -3,6 +3,7 @@ from sklearn.metrics import adjusted_mutual_info_score, adjusted_rand_score, com
 from cluster import *
 from data_treatment import data
 import pandas as pd 
+from spyder_chart import *
 
 # Dados 
 X_train, X_test, y_train, y_test = data().main()
@@ -24,6 +25,8 @@ def metrics():
     return Metricas
 
 # Exportando 
-pd.DataFrame(Metricas).to_csv("Metricas.csv")
+metrica = pd.DataFrame(Forecast)
+metrica.to_csv("Metricas.csv")
 
 # Criando rede web 
+web_plot(metrica)

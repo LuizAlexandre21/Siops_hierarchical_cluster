@@ -23,7 +23,8 @@ def web_plot(dataframe):
                 r = data[columns],
                 theta = categorias,
                 fill = 'toself',
-                name = columns
+                name = columns,
+                labels ={"Metodo":['adjusted_mutual_info_score', 'adjusted_rand_score', 'completeness_score', 'fowlkes_mallows_score', 'homogeneity_score', 'mutual_info_score','normalized_mutual_info_score', 'rand_score', 'v_measure_score']}
             )
         )
     

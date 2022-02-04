@@ -1,12 +1,20 @@
-from sklearn.cluster import KMeans
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import GridSearchCV
+from database import *
+from cluster import * 
 from data_treatment import data 
-import matplotlib.pyplot as plt 
+from spyder_chart import * 
 import pandas as pd 
+import numpy as pd 
+from sklearn.cluster import KMeans
+
+
+dados = data().dataframe()
 
 # Importando os dados 
-dados = data().dataframe()
+loc = np.random.randint(178,size=(20))
+cidades = dados['Municipio'].loc[loc].to_list()
+dados = dados[dados['Municipio'].str.contains(cidades[0]+"|"+cidades[1]+"|"+cidades[2]+"|"+cidades[3]+"|"+cidades[4]+"|"+cidades[5]+"|"+cidades[6]+"|"+cidades[7]+"|"+cidades[8]+"|"+cidades[9]+"|"+cidades[10]+"|"+cidades[11]+"|"+cidades[12]+"|"+cidades[13]+"|"+cidades[14]+"|"+cidades[15]+"|"+cidades[16]+"|"+cidades[17]+"|"+cidades[18]+"|"+cidades[19])]
+
+
 # Filtrando por anos 
 dic = {
     'Capacidade':{
@@ -19,6 +27,7 @@ dic = {
         'Grupo_1':{'Ano':[],'Valor':[]},'Grupo_2':{'Ano':[],'Valor':[]},'Grupo_3':{'Ano':[],'Valor':[]}
         }
     }
+
 for ano in range(2013,2019):
     
     # Filtrando os dados 
@@ -41,8 +50,12 @@ for ano in range(2013,2019):
     # Parametros 
     classifier = KMeans(n_clusters=3)
     classifier.fit(X_train,y_train) 
+
+    # ajustando o modelo
+    model.fit(X_train,y_train)
+    
     # Prevendo  
-    y_pred=classifier.predict(X_test)
+    y_pred=model.predict(X_test)
 
     # Capturando o centroid
     centroid = classifier.cluster_centers_
