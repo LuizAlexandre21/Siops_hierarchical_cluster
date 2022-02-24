@@ -92,11 +92,19 @@ for ano in range(2013,2019):
                 dic['Dependência_Estado']['Grupo_3']['Ano'].append(ano)
 
     # Criando os Graficos
+
 for indicador in X.columns:
     series = dic[str(indicador)]
     fig, axes = plt.subplots(3, 1)
-    axes[0].plot(series['Grupo_1']['Ano'],series['Grupo_1']['Valor'])
-    axes[1].plot(series['Grupo_2']['Ano'],series['Grupo_2']['Valor'])
-    axes[2].plot(series['Grupo_3']['Ano'],series['Grupo_3']['Valor'])
-
+    axes[0].set_ylim([0,1])
+    axes[0].set_xlabel("Ano")
+    axes[0].plot(series['Grupo_1']['Ano'],series['Grupo_1']['Valor'],'-o',color='#3A6073')
+    axes[1].set_ylim([0,1])
+    axes[1].plot(series['Grupo_2']['Ano'],series['Grupo_2']['Valor'],'-o',color='#4286f4')
+    axes[2].set_ylim([0,1])
+    axes[2].plot(series['Grupo_3']['Ano'],series['Grupo_3']['Valor'],'-o',color='#8f94fb')
+    fig.supxlabel('Ano')
+    fig.supylabel(str(indicador))
+    fig.suptitle('Variação do Centroid ao Longo do Tempo ', fontsize=16)
+    fig.legend(["Grupo 1","Grupo 2","Grupo 3"])
 plt.show()

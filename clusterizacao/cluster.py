@@ -1,4 +1,4 @@
-from sklearn.cluster import AgglomerativeClustering, SpectralClustering, OPTICS, MeanShift, Birch, DBSCAN, AffinityPropagation
+from sklearn.cluster import AgglomerativeClustering, SpectralClustering, OPTICS, MeanShift, Birch, DBSCAN, AffinityPropagation,KMeans
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV
 import numpy as np
@@ -148,7 +148,7 @@ def Affinity(X_train, X_test, y_train, y_test):
     model = AffinityPropagation()
     classifier = GridSearchCV(model,params,cv=5,scoring='f1')
     classifier.fit(X_train,y_train) 
-    
+
     # Melhor estimador 
     model = classifier.best_estimator_
 
@@ -168,9 +168,31 @@ def Knn(X_train, X_test, y_train, y_test):
         'n_neighbors':[1,2,3,4,5,6,7,8],
         'weights':['uniform', 'distance'],
         'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute'],
-        'metric':['cityblock', 'cosine', 'euclidean', 'l1', 'l2', 'manhattan'],
+        
     }
     model = KNeighborsClassifier()
+    classifier = GridSearchCV(model,params,cv=5,scoring='f1')
+    classifier.fit(X_train,y_train) 
+    
+    # Melhor estimador 
+    model = classifier.best_estimator_
+
+    # ajustando o modelo
+    model.fit(X_train,y_train)
+    
+    # Prevendo  
+    y_pred=model.predict(X_test)
+
+    return y_pred  
+
+# Kmeans 
+def Kmeans(X_train,X_test,y_train,y_test):
+    # GridSearch 
+    # Parametros 
+    params = {
+        'n_clusters':[2,3,4,5,6,7,8],
+    }
+    model = KMeans()
     classifier = GridSearchCV(model,params,cv=5,scoring='f1')
     classifier.fit(X_train,y_train) 
     

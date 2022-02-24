@@ -10,14 +10,14 @@ X_train, X_test, y_train, y_test = data().main()
 
 # Valores previstos 
 Forecast = {
-    'Metrica':['adjusted_mutual_info_score', 'adjusted_rand_score', 'completeness_score', 'fowlkes_mallows_score', 'homogeneity_score', 'mutual_info_score','normalized_mutual_info_score', 'rand_score', 'v_measure_score'],
-    'Agglomerative': [], 'Spectral':[], 'Optics':[], 'Meanshift':[], 'BIRCH':[], 'Dbscan':[], 'Affinity':[],'Knn':[]
+    'Metrica':['completeness_score', 'fowlkes_mallows_score', 'mutual_info_score', 'rand_score'],
+    'Agglomerative': [], 'Spectral':[], 'Optics':[], 'Meanshift':[], 'BIRCH':[], 'Dbscan':[], 'Affinity':[],'Kmeans':[]
     }
 
 # Computando as metricas
-for method in [Agglomerative,Spectral,Optics,Meanshift,BIRCH,Dbscan,Affinity,Knn]:    
+for method in [Agglomerative,Spectral,Optics,Meanshift,BIRCH,Dbscan,Affinity,Kmeans]:    
     y_pred = method(X_train, X_test, y_train, y_test)
-    for metrics in [adjusted_mutual_info_score, adjusted_rand_score, completeness_score, fowlkes_mallows_score, homogeneity_score, mutual_info_score, normalized_mutual_info_score, rand_score, v_measure_score]:
+    for metrics in [completeness_score, fowlkes_mallows_score, mutual_info_score, rand_score]:
         Forecast[method.__name__].append(metrics(y_test.values.T[0],y_pred))
 
 
