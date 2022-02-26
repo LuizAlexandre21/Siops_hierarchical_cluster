@@ -1,5 +1,5 @@
 # Pacotes 
-from sklearn.cluster import  AffinityPropagation
+from sklearn.cluster import OPTICS
 from sklearn.model_selection import GridSearchCV
 from data_treatment import *
 import plotly.express as px 
