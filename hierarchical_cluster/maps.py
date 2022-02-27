@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 municipios = '/home/alexandre/Documents/Ciência de Dados/Monografia/Siops_hierarchical_cluster_prediction/hierarchical_cluster/Malhas municipais/23MUE250GC_SIR.shp'
 
 # Criando o grafico 
-def maps(dados,codigo_municipio):
+def maps(dados,codigo_municipio,output):
 
     # Importando as malhas geograficas 
     map_df = gdp.read_file(municipios)
@@ -20,4 +20,4 @@ def maps(dados,codigo_municipio):
     # Criando o mapa  
     map.plot(column="Cluster")
 
-    return plt.show()
+    return plt.savefig(output)
