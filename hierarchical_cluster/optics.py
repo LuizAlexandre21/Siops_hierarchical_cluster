@@ -35,8 +35,14 @@ model.fit_predict(ind)
 
 # Criando os graficos 
 fig,axs = plt.subplots(3,1)
-axs[0].scatter(dados["Dependência_União"], dados["Capacidade"], c=labels_)
-axs[1].scatter(dados["Dependência_Estado"],dados["Capacidade"],c=labels_)
-axs[2].scatter(dados["Dependência_Estado"],dados["Dependência_União"],c=labels_)
+axs[0].scatter(dados["Dependência_União"], dados["Capacidade"], c=model.labels_)
+axs[1].scatter(dados["Dependência_Estado"],dados["Capacidade"],c=model.labels_)
+axs[2].scatter(dados["Dependência_Estado"],dados["Dependência_União"],c=model.labels_)
 plt.show()
 
+# Criando os mapas 
+dados['Cluster'] = model.labels_
+
+for ano in range(2013,2019):
+    data = dados[dados['Ano']==ano]
+    maps(data,'Codigo',str(ano))
