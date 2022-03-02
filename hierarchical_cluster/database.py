@@ -69,8 +69,8 @@ class Indicador_Dependencia_Sus(BaseModel):
     Estado = TextField(column_name='estado')
     Codigo = TextField(column_name='codigo')
     Ano = TextField(column_name='ano')
-    Dependência_União = FloatField()
-    Dependência_Estado = FloatField()
+    Dependência_União_sus = FloatField(column_name='Dependência_União')
+    Dependência_Estado_sus = FloatField(column_name='Dependência_Estado')
     class Meta:
         primary_key = False
         table_name = "Indicadores_de_Dependência_SUS"
