@@ -41,7 +41,7 @@ for ano in range(2013,2019):
     
     # Filtrando as tabelas por ano 
     df = dados[dados['Ano']==ano]
-    ind = df[[['Capacidade','Dependência_União','Dependência_Estado','IDH','Dependência_Estado_sus','Dependência_União_sus']]
+    ind = df[['Capacidade','Dependência_União','Dependência_Estado','IDH','Dependência_Estado_sus','Dependência_União_sus']]
     ind,rotulate = data.rotulate(1,ind,"IDH")
 
     # classificando os clusters 
