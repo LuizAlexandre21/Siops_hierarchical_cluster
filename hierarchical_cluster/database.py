@@ -76,7 +76,7 @@ class Indicador_Dependencia_Sus(BaseModel):
         table_name = "Indicadores_de_Dependência_SUS"
         
 # Produto Interno Bruto 
-class ProdutoInternoBrutoCe(BaseModel):
+'''class ProdutoInternoBrutoCe(BaseModel):
     amazônia__legal = TextField(column_name='Amazônia Legal', null=True)
     ano = BigIntegerField(column_name='Ano', null=True)
     codigo_municipio = CharField(column_name='Codigo_municipio', null=True)
@@ -88,4 +88,4 @@ class ProdutoInternoBrutoCe(BaseModel):
 
     class Meta:
         table_name = 'Produto_interno_bruto_ce'
-        primary_key = False
+        primary_key = False'''
